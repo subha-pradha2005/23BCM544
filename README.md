@@ -23,7 +23,6 @@ public class UrlShortenerApplication {
     }
 }
 
-// 🔗 Entity
 @Entity
 class ShortUrl {
     @Id
@@ -36,7 +35,7 @@ class ShortUrl {
     @Column(length = 2048)
     private String originalUrl;
 
-    // Getters and setters
+    
     public Long getId() { return id; }
     public String getShortCode() { return shortCode; }
     public void setShortCode(String shortCode) { this.shortCode = shortCode; }
@@ -44,12 +43,11 @@ class ShortUrl {
     public void setOriginalUrl(String originalUrl) { this.originalUrl = originalUrl; }
 }
 
-// 📦 Repository
 interface ShortUrlRepository extends JpaRepository<ShortUrl, Long> {
     Optional<ShortUrl> findByShortCode(String shortCode);
 }
 
-// ⚙️ Service
+
 @Service
 class ShortUrlService {
     @Autowired
@@ -71,7 +69,7 @@ class ShortUrlService {
     }
 }
 
-// 🌐 Controller
+
 @RestController
 @RequestMapping("/api")
 class ShortUrlController {
